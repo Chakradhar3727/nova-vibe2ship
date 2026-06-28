@@ -1,54 +1,42 @@
-# NOVA: Neural Operations & Virtual Assistant 🚀
-### VIBE2SHIP Hackathon Submission — *Problem 1: The Last-Minute Life Saver*
+# 🌌 NOVA (Neural Operations & Virtual Assistant)
 
-NOVA is not a passive productivity app or a simple to-do list; it is a **Tier 4 Autonomous AI Agent** that perceives, reasons, plans, executes, and reflects on behalf of the user to ensure deadlines are never missed.
+NOVA is a proactive, autonomous AI productivity agent built for high-stakes, deadline-driven environments. Unlike traditional chatbots that wait for your command, NOVA actively monitors your schedule, reasons about your time constraints, and executes real actions on your Google Calendar to prevent you from failing.
+
+Built during a weekend hackathon, NOVA bridges the gap between passive AI chat and active AI agency.
 
 ## ✨ Core Features
 
-*   **🧠 True Agentic Pipeline (ReAct):** Watch NOVA "think" in real-time. The UI exposes NOVA's internal monologue (Observe → Reason → Plan → Execute → Reflect) as it processes your requests and orchestrates tasks.
-*   **🛠️ Gemini 2.5 Flash Tool Calling:** Powered by Google's Gemini API, NOVA doesn't just chat. It executes functions to interact with the world, schedule events, save memories, and compute math.
-*   **🚨 Crisis Mode:** When overwhelmed, NOVA's Crisis Protocol takes over. It scans your Google Calendar, warns you of conflicts, and aggressively blocks out focus time to ensure you meet your most urgent deadline.
-*   **🗓️ Google Calendar Integration:** Fully authenticated via Firebase OAuth2. NOVA reads your schedule and writes real events directly to your actual Google Calendar.
-*   **🗣️ Multi-Language Voice Agent:** Speak to NOVA in English, Hindi, Telugu, Tamil, Bengali, or Marathi. Using native browser Speech-to-Text APIs, it captures your voice in real-time and executes tasks without typing a single word.
-*   **🔔 Proactive Notification Engine:** A silent background worker polls your schedule. Exactly 5 minutes before a deadline, NOVA triggers a native system popup and a custom synthetic "ping" (generated via Web Audio API mathematics, no external MP3s).
-*   **💻 Code Sandbox:** When calculating complex logic (like future timestamps), NOVA autonomously writes JavaScript code, deploys it to a secure Node.js `vm` sandbox, executes it, and uses the return value!
-*   **🧠 Permanent Episodic Memory:** Tell NOVA a fact about yourself, and it uses vector embeddings (`gemini-embedding-2`) to store it permanently and recall it in future conversations.
+*   **🧠 Live Agent Reasoning Loop:** Watch NOVA's thought process in real-time as it cycles through the **Observe → Reason → Plan → Execute → Reflect** framework.
+*   **📅 Autonomous Execution:** NOVA doesn't just suggest a schedule—it securely connects to your Google Calendar API and actively creates time blocks, reminders, and events on your behalf.
+*   **🚨 Crisis Protocol:** When overwhelmed, one click triggers "Crisis Mode." NOVA analyzes your calendar fragmentation, finds a clean chronological path, and forcefully drops a 2.5-hour "DO NOT DISTURB" block into your real schedule to save your deadlines.
+*   **🔔 Proactive Background Engine:** NOVA polls your upcoming Google Calendar events in the background and will trigger a custom synth audio alert exactly 5 minutes before your next meeting.
+*   **🧬 Episodic Memory:** NOVA leverages local vector embeddings to permanently remember important facts and preferences you mention during conversations.
 
-## 🛠️ Technology Stack
-*   **Framework:** Next.js 14 (App Router)
-*   **Styling:** Tailwind CSS & Framer Motion (for hyper-smooth micro-animations)
-*   **AI:** Google Gemini API (`gemini-2.5-flash`, `gemini-embedding-2`)
-*   **Backend Services:** Firebase Authentication, Firestore Database
-*   **APIs:** Google Calendar API, Web Speech API, Web Audio API, Notification API
+## 🛠️ Tech Stack
 
-## 🚀 Local Setup Instructions
+*   **Frontend:** Next.js 14, React, Tailwind CSS, Framer Motion
+*   **AI Engine:** Google Gemini 2.5 Flash (Function Calling, Embeddings, Dynamic System Prompting)
+*   **Authentication & Database:** Firebase Auth, Firestore
+*   **Integrations:** Google Calendar API (OAuth 2.0)
+*   **State Management:** Zustand
 
-1.  **Clone & Install**
-    ```bash
-    git clone <your-repo-link>
-    cd vibe2hackthon/nova-app
-    npm install
-    ```
+## 🚀 Getting Started
 
-2.  **Environment Variables**
-    Create a `.env.local` file in the root of `nova-app` and add your keys (see `.env.example`):
-    ```env
-    NEXT_PUBLIC_FIREBASE_API_KEY=your_key
-    NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_domain
-    NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_id
-    NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_bucket
-    NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-    NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
-    NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_key
-    ```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Chakradhar3727/nova-vibe2ship.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up your environment variables (Firebase, Gemini API, Google Calendar OAuth).
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-3.  **Run the Server**
-    ```bash
-    npm run dev
-    ```
-    Open [http://localhost:3000](http://localhost:3000) in your browser.
+## 🎨 UI / UX Design
 
-## 🏆 Hackathon Highlights
-We focused heavily on the **Vibe & Polish**, creating a cinematic, hacker-style UI that makes you feel like you are interacting with a highly intelligent operating system. The integration of native APIs (Speech, Audio, Notifications) elevates this beyond a simple wrapper into a deeply integrated daily companion.
-
-Built with ❤️ for the VIBE2SHIP Hackathon.
+NOVA is built with a premium, aesthetic interface featuring glassmorphism, dynamic glowing gradients, micro-animations, and a highly polished dark mode. The UI is designed to feel like a futuristic Command Center, inspiring focus and clarity.
