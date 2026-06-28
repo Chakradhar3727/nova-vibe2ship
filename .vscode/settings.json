@@ -1,0 +1,8 @@
+{
+  "css.customData": [".vscode/css-custom-data.json"],
+  "css.validate": false,
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.includeLanguages": {
+    "css": "css"
+  }
+}

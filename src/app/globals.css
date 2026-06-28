@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+  
+  /* Apple Design Colors */
+  --color-apple-primary: #0066cc;
+  --color-apple-primary-focus: #0071e3;
+  --color-apple-primary-dark: #2997ff;
+  --color-apple-ink: #1d1d1f;
+  --color-apple-body-muted: #cccccc;
+  --color-apple-ink-muted-80: #333333;
+  --color-apple-ink-muted-48: #7a7a7a;
+  --color-apple-divider: #f0f0f0;
+  --color-apple-hairline: #e0e0e0;
+  --color-apple-canvas: #ffffff;
+  --color-apple-parchment: #f5f5f7;
+  --color-apple-pearl: #fafafc;
+  --color-apple-tile-1: #272729;
+  --color-apple-tile-2: #2a2a2c;
+  --color-apple-tile-3: #252527;
+  --color-apple-chip: rgba(210, 210, 215, 0.64);
+}
+
+/* Apple Typography Defaults */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: 17px; /* Apple signature body size */
+  line-height: 1.47;
+  letter-spacing: -0.01em; /* Mimic SF Pro Text */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Apple Heading Tracking */
+h1, h2, h3, h4, h5, h6, .display-tight {
+  letter-spacing: -0.02em; /* Mimic SF Pro Display */
+}
+
+/* Utility classes for specific component styles */
+@layer utilities {
+  .apple-pill {
+    border-radius: 9999px;
+  }
+  
+  .apple-card {
+    border-radius: 18px;
+  }
+  
+  .apple-shadow {
+    box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+  }
+}
