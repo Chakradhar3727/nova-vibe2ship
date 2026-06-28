@@ -157,13 +157,20 @@ Rules:
 // Create the Gemini model with function calling
 export function createNovaModel(memoriesContext?: string) {
   const localTime = new Date().toLocaleString();
-  const utcTime = new Date().toISOString();
+  const offset = new Date().getTimezoneOffset();
+  const sign = offset > 0 ? '-' : '+';
+  const absOffset = Math.abs(offset);
+  const hours = String(Math.floor(absOffset / 60)).padStart(2, '0');
+  const minutes = String(absOffset % 60).padStart(2, '0');
+  const timezoneString = `${sign}${hours}:${minutes}`;
+
   let prompt = `You are NOVA, an advanced autonomous agent.
   
 CRITICAL TIMEZONE INSTRUCTION:
 - The user's current local time is: ${localTime}
-- The current UTC time for API calls is: ${utcTime}
-When creating calendar events, you MUST output the startTime and endTime in UTC ISO 8601 format (ending in 'Z'). Do NOT just append 'Z' to the local time. You must add the requested minutes to the UTC time! For example, if the user asks for a meeting in 6 minutes, add 6 minutes to ${utcTime}.
+- The user's timezone offset is: ${timezoneString}
+When creating calendar events, you MUST output the startTime and endTime in ISO 8601 format WITH the timezone offset (do NOT use 'Z' for UTC). 
+For example, if the local time is 03:47 AM and the user wants a meeting in 6 minutes, you must output: 2026-06-29T03:53:00${timezoneString}
 
 ` + NOVA_SYSTEM_PROMPT;
   
