@@ -13,6 +13,7 @@ const STATE_ICONS: Record<AgentStateType, React.ReactNode> = {
   EXECUTE: <Zap className="w-[18px] h-[18px]" />,
   REFLECT: <RotateCcw className="w-[18px] h-[18px]" />,
   CRISIS: <AlertTriangle className="w-[18px] h-[18px]" />,
+  BACKGROUND: <Activity className="w-[18px] h-[18px]" />,
 };
 
 const PIPELINE_STATES: AgentStateType[] = ['OBSERVE', 'REASON', 'PLAN', 'EXECUTE', 'REFLECT'];
