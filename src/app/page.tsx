@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Search, LogOut, ArrowRight, User as UserIcon, Calendar, Zap, Shield, Sparkles, Command, BrainCircuit, Activity } from 'lucide-react';
 import { useAuth } from '@/lib/authContext';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // Custom component for the staggering text reveal
 const StaggeredText = ({ text, className }: { text: string, className: string }) => {
@@ -42,13 +42,15 @@ export default function LandingPage() {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   
   // Mouse tracking for dynamic spotlight effect
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const spotlightRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      if (spotlightRef.current) {
+        spotlightRef.current.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0.03), transparent 40%)`;
+      }
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
@@ -57,10 +59,8 @@ export default function LandingPage() {
       
       {/* Dynamic Cursor Spotlight (Subtle) */}
       <div 
+        ref={spotlightRef}
         className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-300 opacity-50 mix-blend-screen"
-        style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.03), transparent 40%)`
-        }}
       />
 
       {/* Animated Ambient Glows (Deep Atmospheric Aurora) */}
